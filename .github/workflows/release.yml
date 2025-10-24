@@ -3,8 +3,8 @@ name: Build and Release CCR
 on:
   workflow_dispatch:
   push:
-    tags:
-      - "v*" # 只在打 tag 时触发，如 v1.0.65
+    branches:
+      - main  # 或者你希望触发的主分支
 
 permissions:
   contents: write
@@ -22,6 +22,13 @@ jobs:
         with:
           node-version: 20
 
+      - name: Generate date tag
+        id: date-tag
+        run: |
+          CURRENT_DATE=$(date +'%y%m%d')
+          echo "TAG=release-$CURRENT_DATE" >> $GITHUB_ENV
+          echo "Generated tag: release-$CURRENT_DATE"
+
       - name: Install dependencies
         run: npm install
 
@@ -29,10 +36,7 @@ jobs:
         run: npm run build
 
       - name: Package files
-        id: package
         run: |
-          TAG="${GITHUB_REF#refs/tags/}"
-          echo "TAG=${TAG}" >> $GITHUB_ENV
           mkdir -p release
           cp -r dist package.json README.md LICENSE release/
           cd release
