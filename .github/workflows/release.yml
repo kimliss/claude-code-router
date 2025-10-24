@@ -1,6 +1,7 @@
 name: Build and Release CCR
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "v*" # 只在打 tag 时触发，如 v1.0.65
