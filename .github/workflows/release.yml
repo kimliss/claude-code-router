@@ -35,9 +35,9 @@ jobs:
           mkdir -p release
           cp -r dist package.json README.md LICENSE release/
           cd release
-          tar -czf ../ccr-${TAG}.tar.gz .
+          tar -czf ../ccr-main.tar.gz .
           cd ..
-          echo "✅ Created ccr-${TAG}.tar.gz"
+          echo "✅ Created ccr-main.tar.gz"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
