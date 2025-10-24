@@ -1,29 +1,13 @@
-
 #!/usr/bin/env bash
 set -e
 
-REPO="kimliss/claude-code-router"
-TAG=${1:-latest}
-INSTALL_DIR="/usr/local/bin"
+INSTALL_PATH="/usr/local/bin/ccr"
 
-echo "🚀 Installing CCR (${TAG}) ..."
+echo "🧹 Uninstalling CCR..."
 
-TMP_DIR=$(mktemp -d)
-cd "$TMP_DIR"
-
-if [ "$TAG" = "latest" ]; then
-  URL="https://github.com/$REPO/releases/latest/download/ccr-${TAG}.tar.gz"
+if [ -f "$INSTALL_PATH" ]; then
+  sudo rm "$INSTALL_PATH"
+  echo "✅ Removed $INSTALL_PATH"
 else
-  URL="https://github.com/$REPO/releases/download/${TAG}/ccr-${TAG}.tar.gz"
+  echo "⚠️  ccr not found in $INSTALL_PATH"
 fi
-
-echo "⬇️  Downloading from $URL"
-curl -L -o ccr.tar.gz "$URL"
-tar -xzf ccr.tar.gz
-
-# 复制 CLI
-chmod +x dist/cli.js
-sudo ln -sf "$(pwd)/dist/cli.js" "$INSTALL_DIR/ccr"
-
-echo "✅ CCR installed to $INSTALL_DIR/ccr"
-echo "➡️  Try: ccr --help"
