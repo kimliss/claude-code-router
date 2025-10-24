@@ -12,9 +12,9 @@ TMP_DIR=$(mktemp -d)
 cd "$TMP_DIR"
 
 if [ "$TAG" = "latest" ]; then
-  URL="https://github.com/$REPO/releases/latest/download/ccr-${TAG}.tar.gz"
+  URL="https://github.com/$REPO/releases/latest/download/ccr-main.tar.gz"
 else
-  URL="https://github.com/$REPO/releases/download/${TAG}/ccr-${TAG}.tar.gz"
+  URL="https://github.com/$REPO/releases/download/${TAG}/ccr-main.tar.gz"
 fi
 
 echo "⬇️  Downloading from $URL"
