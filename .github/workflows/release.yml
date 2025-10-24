@@ -26,8 +26,8 @@ jobs:
         id: date-tag
         run: |
           CURRENT_DATE=$(date +'%y%m%d')
-          echo "TAG=release-$CURRENT_DATE" >> $GITHUB_ENV
-          echo "Generated tag: release-$CURRENT_DATE"
+          echo "TAG=v$CURRENT_DATE" >> $GITHUB_ENV
+          echo "Generated tag: v$CURRENT_DATE"
 
       - name: Install dependencies
         run: npm install
