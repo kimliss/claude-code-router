@@ -40,7 +40,10 @@ npm install -g @anthropic-ai/claude-code
 Then, install Claude Code Router:
 
 ```shell
+### use npm
 npm install -g @musistudio/claude-code-router
+### or use sh
+curl -fsSL https://raw.githubusercontent.com/kimliss/claude-code-router/main/install.sh | bash
 ```
 
 ### 2. Configuration
