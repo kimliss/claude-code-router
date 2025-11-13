@@ -1,0 +1,39 @@
+name: Build and Release  
+  
+on:  
+  push:  
+    tags:  
+      - 'v*'  
+  
+jobs:  
+  build:  
+    runs-on: macos-latest  
+    steps:  
+      - uses: actions/checkout@v4  
+        
+      - name: Setup Node.js  
+        uses: actions/setup-node@v4  
+        with:  
+          node-version: '20'  
+        
+      - name: Install dependencies  
+        run: npm install  
+        
+      - name: Build  
+        run: npm run build  
+        
+      - name: Package for macOS  
+        run: |  
+          mkdir -p release/claude-code-router  
+          cp -r dist release/claude-code-router/  
+          cp package.json release/claude-code-router/  
+          cp -r node_modules release/claude-code-router/  
+          cd release  
+          tar -czf claude-code-router-macos.tar.gz claude-code-router  
+        
+      - name: Create Release  
+        uses: softprops/action-gh-release@v1  
+        with:  
+          files: release/claude-code-router-macos.tar.gz  
+        env:  
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
