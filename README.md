@@ -42,8 +42,13 @@ Then, install Claude Code Router:
 ```shell
 ### use npm
 npm install -g @musistudio/claude-code-router
-### or use sh
-curl -fsSL https://raw.githubusercontent.com/kimliss/claude-code-router/main/install.sh | bash
+### use bash
+#### lastest
+curl -fsSL https://raw.githubusercontent.com/kimliss/claude-code-router/main/setup.sh | bash -s install
+#### v1.0.65
+curl -fsSL https://raw.githubusercontent.com/kimliss/claude-code-router/main/setup.sh | bash -s install v1.0.65
+#### uninstall
+curl -fsSL https://raw.githubusercontent.com/kimliss/claude-code-router/main/setup.sh | bash -s uninstall
 ```
 
 ### 2. Configuration
