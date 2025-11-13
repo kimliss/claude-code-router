@@ -29,9 +29,9 @@ function install() {
     
   # Download release  
   if [ "$VERSION" = "latest" ]; then  
-    DOWNLOAD_URL="https://github.com/musistudio/claude-code-router/releases/latest/download/claude-code-router-macos.tar.gz"  
+    DOWNLOAD_URL="https://github.com/kimliss/claude-code-router/releases/latest/download/claude-code-router-macos.tar.gz"  
   else  
-    DOWNLOAD_URL="https://github.com/musistudio/claude-code-router/releases/download/$VERSION/claude-code-router-macos.tar.gz"  
+    DOWNLOAD_URL="https://github.com/kimliss/claude-code-router/releases/download/$VERSION/claude-code-router-macos.tar.gz"  
   fi  
     
   # Create install directory  
